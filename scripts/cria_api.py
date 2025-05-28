@@ -11,15 +11,6 @@ def create_files(entidade):
             core/models/{entidade}.py \
             core/serializers/{entidade}.py \
             core/views/{entidade}.py',
-        f'code \
-            core/models/{entidade}.py \
-            core/models/__init__.py \
-            core/admin.py \
-            core/serializers/{entidade}.py \
-            core/serializers/__init__.py \
-            core/views/{entidade}.py \
-            core/views/__init__.py \
-            app/urls.py',
     ]
 
     # Executa cada comando
