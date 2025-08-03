@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'rest_framework',
     'core',
+    'uploader',
 ]
 
 MIDDLEWARE = [
@@ -74,13 +75,21 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 # Databases
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+if MODE == 'DEVELOPMENT':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='sqlite:///db.sqlite3',
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
